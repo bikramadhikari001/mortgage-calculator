@@ -1,6 +1,7 @@
 // Event handlers with debouncing and better event delegation
 import { calculateAllCosts } from './calculations.js';
 import { updateUI } from './ui.js';
+import { generatePDF } from './export.js';
 
 // Debounce function
 function debounce(func, wait) {
@@ -178,8 +179,17 @@ function setupShareButtons(modal) {
 function setupExportButton() {
     const exportBtn = document.getElementById('exportPDF');
     if (exportBtn) {
-        exportBtn.addEventListener('click', () => {
-            window.print();
+        exportBtn.addEventListener('click', async () => {
+            try {
+                exportBtn.disabled = true;
+                exportBtn.textContent = 'Generating PDF...';
+                await generatePDF();
+            } catch (error) {
+                console.error('Error generating PDF:', error);
+            } finally {
+                exportBtn.disabled = false;
+                exportBtn.textContent = 'Export Report';
+            }
         });
     }
 }
