@@ -1,0 +1,143 @@
+/* Print Styles */
+@media print {
+    @page {
+        size: A4;
+        margin: 2cm;
+    }
+
+    body {
+        background: white !important;
+        color: black !important;
+    }
+
+    .sticky-header,
+    .header-actions,
+    .modal {
+        display: none !important;
+    }
+
+    .app-container {
+        margin: 0 !important;
+        padding: 0 !important;
+        max-width: none !important;
+        background: white !important;
+    }
+
+    .calculator {
+        padding: 0 !important;
+    }
+
+    /* Report Header */
+    .calculator::before {
+        content: 'Mortgage Analysis Report';
+        display: block;
+        font-size: 24pt;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 1cm;
+        color: #1f2937;
+        border-bottom: 2pt solid #2563eb;
+        padding-bottom: 0.5cm;
+    }
+
+    .intro-section {
+        text-align: center;
+        margin-bottom: 1cm;
+        font-size: 11pt;
+        color: #4b5563;
+    }
+
+    /* Layout */
+    .calculator-grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 1cm !important;
+    }
+
+    .section-card,
+    .results-section {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+        margin-bottom: 1cm !important;
+        box-shadow: none !important;
+        border: 1pt solid #e5e7eb !important;
+        padding: 1cm !important;
+    }
+
+    /* Section Headers */
+    .section-card h2,
+    .results-section h2 {
+        color: #1f2937 !important;
+        font-size: 14pt !important;
+        margin-bottom: 0.5cm !important;
+        border-bottom: 1pt solid #e5e7eb !important;
+        padding-bottom: 0.25cm !important;
+    }
+
+    /* Options Grid */
+    .options-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.5cm !important;
+    }
+
+    .option-card {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+        border: 1pt solid #e5e7eb !important;
+    }
+
+    /* Metrics */
+    .key-metrics {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+        margin: 1cm 0 !important;
+    }
+
+    .metric-card {
+        border: 1pt solid #e5e7eb !important;
+    }
+
+    /* Cost Breakdowns */
+    .breakdown-section {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+        margin: 1cm 0 !important;
+    }
+
+    .cost-items {
+        border: 1pt solid #e5e7eb !important;
+    }
+
+    /* Charts */
+    .chart-container {
+        height: 8cm !important;
+        margin: 1cm 0 !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+        border: 1pt solid #e5e7eb !important;
+    }
+
+    /* Footer */
+    .calculator::after {
+        content: 'Generated on ' attr(data-date);
+        display: block;
+        text-align: center;
+        margin-top: 2cm;
+        font-size: 9pt;
+        color: #6b7280;
+        border-top: 1pt solid #e5e7eb;
+        padding-top: 0.5cm;
+    }
+
+    /* Hide Interactive Elements */
+    button,
+    input[type="checkbox"] {
+        display: none !important;
+    }
+
+    /* Ensure Text Readability */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+}

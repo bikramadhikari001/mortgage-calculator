@@ -1,0 +1,94 @@
+<div class="results-card">
+    <div class="results-header">
+        <h3>Cost Breakdown</h3>
+        <button id="exportPDF" class="btn btn-outline">
+            <i class="fas fa-download"></i> Export PDF
+        </button>
+    </div>
+
+    <div class="chart-container">
+        <canvas id="costsChart"></canvas>
+    </div>
+
+    <div class="key-metrics">
+        <div class="metric-card">
+            <span class="metric-label">Monthly Payment</span>
+            <span class="metric-value" id="monthlyPaymentMetric">£1,250</span>
+            <span class="metric-change positive">↓ £50 vs. market avg</span>
+        </div>
+        <div class="metric-card">
+            <span class="metric-label">Total Upfront</span>
+            <span class="metric-value" id="upfrontCostMetric">£28,700</span>
+            <div class="info-text">Potential savings: £2,500</div>
+        </div>
+        <div class="metric-card">
+            <span class="metric-label">LTV Ratio</span>
+            <span class="metric-value" id="ltvMetric">90%</span>
+            <div class="info-text">Moderate risk</div>
+        </div>
+    </div>
+
+    <div class="breakdown-section">
+        <h4>One-Time Costs</h4>
+        <div class="cost-items">
+            <div class="cost-item">
+                <span>Deposit</span>
+                <span id="depositResult">£25,000</span>
+            </div>
+            <div class="cost-item">
+                <span>Stamp Duty</span>
+                <span id="stampDutyResult">£0</span>
+            </div>
+            <div class="cost-item">
+                <span>Legal Fees</span>
+                <span id="legalFeesResult">£1,600</span>
+            </div>
+            <div class="cost-item">
+                <span>Survey & Valuation</span>
+                <span id="surveyResult">£400</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="breakdown-section">
+        <h4>Monthly Costs</h4>
+        <div class="cost-items">
+            <div class="cost-item">
+                <span>Mortgage Payment</span>
+                <span id="mortgagePaymentResult">£1,250</span>
+            </div>
+            <div class="cost-item">
+                <span>Insurance</span>
+                <span id="insuranceResult">£25</span>
+            </div>
+            <div class="cost-item" id="serviceLeaseholdRow">
+                <span>Service Charge</span>
+                <span id="serviceLeaseholdResult">£150</span>
+            </div>
+            <div class="cost-item">
+                <span>Maintenance Fund</span>
+                <span id="maintenanceResult">£100</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="recommendations">
+        <h4>Smart Recommendations</h4>
+        <div class="recommendation-list" id="recommendationsList">
+            <!-- Dynamically populated -->
+        </div>
+    </div>
+</div>
+
+<div class="comparison-card">
+    <h3>Compare Scenarios</h3>
+    <div class="scenario-tabs">
+        <button class="scenario-tab active">Current</button>
+        <button class="scenario-tab">5% Deposit</button>
+        <button class="scenario-tab">15% Deposit</button>
+        <button class="scenario-tab">+ New</button>
+    </div>
+    <div class="comparison-chart">
+        <canvas id="comparisonChart"></canvas>
+    </div>
+</div>

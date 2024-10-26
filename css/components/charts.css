@@ -1,0 +1,106 @@
+/* Chart Container */
+.chart-container {
+    margin: 2rem 0;
+    height: 300px;
+    position: relative;
+    background: white;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.chart-container canvas {
+    width: 100% !important;
+}
+
+/* Chart Legend */
+.chart-legend {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    background: #f9fafb;
+    border-radius: 0.5rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: #4b5563;
+}
+
+.legend-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+}
+
+.legend-color.current {
+    background: #2563eb;
+}
+
+.legend-color.alternative {
+    background: #10b981;
+}
+
+/* Chart Colors */
+:root {
+    --chart-primary: #2563eb;
+    --chart-success: #10b981;
+    --chart-warning: #f59e0b;
+    --chart-gray: #6b7280;
+}
+
+/* Chart Tooltips */
+.chart-tooltip {
+    background: rgba(17, 24, 39, 0.95) !important;
+    border-radius: 0.5rem !important;
+    padding: 0.75rem !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    font-family: 'Inter', sans-serif !important;
+}
+
+.chart-tooltip-label {
+    color: white !important;
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+    margin-bottom: 0.25rem !important;
+}
+
+.chart-tooltip-value {
+    color: #e5e7eb !important;
+    font-size: 0.875rem !important;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .chart-container {
+        height: 250px;
+        margin: 1.5rem 0;
+        padding: 0.75rem;
+    }
+
+    .chart-legend {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .chart-container {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        margin: 1cm 0;
+        border: 1pt solid #e5e7eb;
+    }
+
+    .chart-legend {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+}

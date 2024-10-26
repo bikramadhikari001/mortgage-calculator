@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Mortgage Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/forms.css">
+</head>
+<body>
+    <header class="sticky-header">
+        <div class="header-content">
+            <h1>Smart Mortgage Calculator</h1>
+            <div class="header-actions">
+                <button class="btn btn-outline" onclick="window.print()">
+                    <i class="fas fa-file-pdf"></i>
+                    Export Report
+                </button>
+                <button class="btn btn-outline" id="shareButton">
+                    <i class="fas fa-share-alt"></i>
+                    Share
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="app-container">
+        <div class="calculator" data-date="">
+            <div class="intro-section">
+                <p>Make informed decisions about your home purchase with real-time insights and personalized recommendations.</p>
+            </div>
+
+            <div class="calculator-grid">
+                <div class="section-card">
+                    <h2>Property Details</h2>
+                    <div class="input-row">
+                        <div class="input-col">
+                            <label for="propertyPrice">Property Price (£)</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-home"></i>
+                                <input type="number" id="propertyPrice" value="250000" min="0" step="1000">
+                            </div>
+                            <div class="info-text">Average in this area: £275,000</div>
+                        </div>
+                        <div class="input-col">
+                            <label for="depositPercentage">Deposit Percentage (%)</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-piggy-bank"></i>
+                                <input type="number" id="depositPercentage" value="10" min="5" max="100">
+                            </div>
+                            <div class="info-text">Good deposit size</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <h2>Mortgage Details</h2>
+                    <div class="input-row">
+                        <div class="input-col">
+                            <label for="mortgageTerm">Mortgage Term (Years)</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                                <select id="mortgageTerm" class="select-input">
+                                    <option value="5">5 years</option>
+                                    <option value="10">10 years</option>
+                                    <option value="15">15 years</option>
+                                    <option value="20">20 years</option>
+                                    <option value="25" selected>25 years</option>
+                                    <option value="30">30 years</option>
+                                    <option value="35">35 years</option>
+                                    <option value="40">40 years</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-col">
+                            <label for="interestRate">Interest Rate (%)</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-percent"></i>
+                                <input type="number" id="interestRate" value="4.5" min="0" step="0.1">
+                            </div>
+                            <div class="info-text">Current market average: 4.2%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <h2>Additional Options</h2>
+                    <div class="options-grid">
+                        <label class="option-card">
+                            <input type="checkbox" id="firstTimeBuyer" checked>
+                            <i class="fas fa-home"></i>
+                            <span>First Time Buyer</span>
+                            <span class="savings-tag">Save up to £5,000</span>
+                        </label>
+                        <label class="option-card">
+                            <input type="checkbox" id="mortgageBroker">
+                            <i class="fas fa-handshake"></i>
+                            <span>Mortgage Broker</span>
+                            <span class="cost-tag">£500-£1,000</span>
+                        </label>
+                        <label class="option-card">
+                            <input type="checkbox" id="fullSurvey">
+                            <i class="fas fa-clipboard-check"></i>
+                            <span>Full Survey</span>
+                            <span class="cost-tag">£800+</span>
+                        </label>
+                        <label class="option-card">
+                            <input type="checkbox" id="removals">
+                            <i class="fas fa-truck"></i>
+                            <span>Removals</span>
+                            <span class="cost-tag">~£1,000</span>
+                        </label>
+                        <label class="option-card">
+                            <input type="checkbox" id="storage">
+                            <i class="fas fa-box"></i>
+                            <span>Storage</span>
+                            <span class="cost-tag">£50-100/month</span>
+                        </label>
+                        <label class="option-card">
+                            <input type="checkbox" id="isLeasehold">
+                            <i class="fas fa-building"></i>
+                            <span>Leasehold</span>
+                            <span class="cost-tag">Ongoing fees</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="results-section">
+                    <div class="key-metrics">
+                        <div class="metric-card">
+                            <span class="metric-label">Monthly Payment</span>
+                            <span class="metric-value" id="monthlyPaymentMetric">£1,250</span>
+                            <span class="info-text">£50 vs. market avg</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-label">Total Upfront</span>
+                            <span class="metric-value" id="upfrontCostMetric">£28,700</span>
+                            <span class="info-text">Potential savings: £2,500</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-label">LTV Ratio</span>
+                            <span class="metric-value" id="ltvMetric">90%</span>
+                            <span class="info-text">Moderate risk</span>
+                        </div>
+                    </div>
+
+                    <div class="chart-container">
+                        <canvas id="costsChart"></canvas>
+                    </div>
+
+                    <div class="breakdown-section">
+                        <h3>One-Time Costs</h3>
+                        <div class="cost-items">
+                            <div class="cost-item">
+                                <span>Deposit</span>
+                                <span id="depositResult">£25,000</span>
+                            </div>
+                            <div class="cost-item">
+                                <span>Stamp Duty</span>
+                                <span id="stampDutyResult">£0</span>
+                            </div>
+                            <div class="cost-item">
+                                <span>Legal Fees</span>
+                                <span id="legalFeesResult">£1,600</span>
+                            </div>
+                            <div class="cost-item">
+                                <span>Survey & Valuation</span>
+                                <span id="surveyResult">£400</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="breakdown-section">
+                        <h3>Monthly Costs</h3>
+                        <div class="cost-items">
+                            <div class="cost-item">
+                                <span>Mortgage Payment</span>
+                                <span id="mortgagePaymentResult">£1,250</span>
+                            </div>
+                            <div class="cost-item">
+                                <span>Insurance</span>
+                                <span id="insuranceResult">£25</span>
+                            </div>
+                            <div class="cost-item" id="serviceLeaseholdRow">
+                                <span>Service Charge</span>
+                                <span id="serviceLeaseholdResult">£150</span>
+                            </div>
+                            <div class="cost-item">
+                                <span>Maintenance Fund</span>
+                                <span id="maintenanceResult">£100</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chart-container">
+                        <canvas id="comparisonChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Share Modal -->
+    <div class="modal" id="shareModal">
+        <div class="modal-content">
+            <h3>Share Calculator</h3>
+            <div class="share-buttons">
+                <button class="share-btn facebook">
+                    <i class="fab fa-facebook"></i>
+                    Facebook
+                </button>
+                <button class="share-btn twitter">
+                    <i class="fab fa-twitter"></i>
+                    Twitter
+                </button>
+                <button class="share-btn whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp
+                </button>
+                <button class="share-btn email">
+                    <i class="fas fa-envelope"></i>
+                    Email
+                </button>
+            </div>
+            <div class="share-link">
+                <input type="text" value="https://mortgage-calculator.example.com" readonly>
+                <button class="btn btn-primary">Copy Link</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky Footer -->
+    <footer class="sticky-footer">
+        <div class="footer-content">
+            <div class="total-costs">
+                <div class="cost-group">
+                    <span class="cost-label">Total One-Time Costs</span>
+                    <span class="cost-value" id="totalOneTimeCosts">£27,000</span>
+                </div>
+                <div class="cost-group">
+                    <span class="cost-label">Total Monthly Costs</span>
+                    <span class="cost-value" id="totalMonthlyCosts">£1,584</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module">
+        import { initializeCalculator } from './js/main.js';
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set current date for the report
+            const calculator = document.querySelector('.calculator');
+            const currentDate = new Date().toLocaleDateString('en-GB', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            });
+            calculator.setAttribute('data-date', currentDate);
+            
+            initializeCalculator();
+        });
+    </script>
+</body>
+</html>

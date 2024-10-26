@@ -1,0 +1,26 @@
+<div class="section-card" id="mortgageSection">
+    <h2 class="section-title">Mortgage Details</h2>
+    <div class="input-row">
+        <div class="input-col">
+            <label for="mortgageTerm">Mortgage Term (Years)</label>
+            <div class="input-with-icon">
+                <i class="fas fa-calendar-alt"></i>
+                <input type="number" id="mortgageTerm" value="25" min="5" max="40">
+            </div>
+            <div class="term-slider">
+                <input type="range" min="5" max="40" value="25" class="slider" id="termSlider">
+            </div>
+        </div>
+        <div class="input-col">
+            <label for="interestRate">Interest Rate (%)</label>
+            <div class="input-with-icon">
+                <i class="fas fa-percent"></i>
+                <input type="number" id="interestRate" value="4.5" min="0" step="0.1">
+            </div>
+            <div class="info-text">
+                <i class="fas fa-info-circle"></i>
+                <span>Current market average: 4.2%</span>
+            </div>
+        </div>
+    </div>
+</div>

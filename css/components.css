@@ -1,0 +1,65 @@
+/* Import Component Styles */
+@import 'components/header.css';
+@import 'components/options.css';
+@import 'components/modals.css';
+@import 'components/metrics.css';
+@import 'components/charts.css';
+@import 'components/print.css';
+@import 'components/footer.css';
+
+/* App Container */
+.app-container {
+    margin-top: 6rem;
+    margin-bottom: 5rem; /* Add space for sticky footer */
+    padding: 2rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    background: #f3f4f6;
+    min-height: calc(100vh - 11rem); /* Adjust for header and footer */
+}
+
+/* Calculator Layout */
+.calculator {
+    width: 100%;
+}
+
+.calculator-grid {
+    display: grid;
+    gap: 2rem;
+}
+
+/* Select Input Styles */
+.select-input {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    background-color: white;
+    color: #1f2937;
+    font-size: 1rem;
+    line-height: 1.5;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236B7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1.25rem;
+}
+
+.select-input:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Responsive Base Layout */
+@media (max-width: 768px) {
+    .app-container {
+        padding: 1rem;
+        margin-bottom: 7rem; /* More space for footer on mobile */
+    }
+
+    .calculator-grid {
+        gap: 1.5rem;
+    }
+}

@@ -1,0 +1,105 @@
+/* Card Components */
+
+.section-card {
+    background: var(--gray-50);
+    border-radius: var(--radius);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid var(--gray-200);
+    transition: all 0.3s ease;
+}
+
+.section-card:hover {
+    box-shadow: var(--shadow);
+    border-color: var(--primary-light);
+}
+
+.option-card {
+    background: white;
+    padding: 1.75rem;
+    border-radius: var(--radius);
+    border: 2px solid var(--gray-200);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    position: relative;
+    text-align: center;
+    min-height: 160px;
+}
+
+.option-card:hover {
+    border-color: var(--primary);
+    background: var(--primary-light);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.option-card i {
+    font-size: 1.75rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.option-card input[type="checkbox"] {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.cost-tag,
+.savings-tag {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    position: relative;
+    top: auto;
+    margin-top: auto;
+}
+
+.cost-tag {
+    background: var(--error-light);
+    color: var(--error-dark);
+}
+
+.savings-tag {
+    background: var(--success-light);
+    color: var(--success-dark);
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    .section-card {
+        background: var(--bg-tertiary);
+        border-color: var(--border-color);
+    }
+
+    .option-card {
+        background: var(--bg-tertiary);
+        border-color: var(--border-color);
+    }
+
+    .option-card:hover {
+        background: var(--bg-secondary);
+        border-color: var(--primary);
+    }
+
+    .option-card i {
+        color: var(--primary);
+    }
+
+    .cost-tag {
+        background: var(--error-light);
+        color: var(--error);
+    }
+
+    .savings-tag {
+        background: var(--success-light);
+        color: var(--success);
+    }
+}

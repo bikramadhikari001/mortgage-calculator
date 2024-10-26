@@ -1,0 +1,114 @@
+/* Progress Tracker */
+
+.progress-tracker {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    margin: 2rem 0;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.progress-tracker::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 15%;
+    right: 15%;
+    height: 2px;
+    background: var(--gray-200);
+    z-index: 0;
+}
+
+.progress-step {
+    position: relative;
+    z-index: 1;
+    background: white;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    color: var(--gray-500);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.progress-step::before {
+    content: '';
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid var(--gray-300);
+    margin-right: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.progress-step.active {
+    color: var(--primary);
+}
+
+.progress-step.active::before {
+    background: var(--primary);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px var(--primary-light);
+}
+
+.progress-step:hover:not(.active) {
+    color: var(--primary-dark);
+}
+
+.progress-step:hover:not(.active)::before {
+    border-color: var(--primary);
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    .progress-tracker::before {
+        background: var(--border-color);
+    }
+
+    .progress-step {
+        background: var(--bg-tertiary);
+        color: var(--text-secondary);
+    }
+
+    .progress-step::before {
+        background: var(--bg-tertiary);
+        border-color: var(--border-color);
+    }
+
+    .progress-step.active {
+        background: var(--primary);
+        color: var(--text-primary);
+    }
+
+    .progress-step.active::before {
+        background: var(--text-primary);
+        border-color: var(--text-primary);
+        box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3);
+    }
+
+    .progress-step:hover:not(.active) {
+        background: var(--bg-secondary);
+    }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .progress-tracker {
+        gap: 2rem;
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding: 0.5rem 1rem;
+    }
+
+    .progress-step {
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+}
